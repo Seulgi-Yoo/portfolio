@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 48px/1.1 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; fill: white }
+      .sub { font: 400 24px/1.2 'Inter'; fill: rgba(255,255,255,0.9) }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g)" />
+  <g transform="translate(60,120)">
+    <text class="title">이커머스 플랫폼</text>
+    <text class="sub" y="64">Demo screenshot (SVG placeholder)</text>
+  </g>
+  <g transform="translate(60,260)">
+    <rect x="0" y="0" rx="12" ry="12" width="440" height="240" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.06)" />
+    <rect x="470" y="0" rx="12" ry="12" width="440" height="240" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.04)" />
+  </g>
+</svg>
