@@ -20,7 +20,10 @@ export default async function ProjectDetail({ params }: { params: any }) {
   // NOTE(ko): resolvedParams가 { id: '0' } 형태가 아니라
   // { value: '{"id":"0"}' } 같은 구조로 올 수 있으므로 안전하게 파싱합니다.
   let id: string | undefined = resolvedParams?.id;
-  if ((!id || id === "undefined") && typeof resolvedParams?.value === "string") {
+  if (
+    (!id || id === "undefined") &&
+    typeof resolvedParams?.value === "string"
+  ) {
     try {
       const parsed = JSON.parse(resolvedParams.value);
       id = parsed?.id ?? id;
@@ -37,7 +40,9 @@ export default async function ProjectDetail({ params }: { params: any }) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-950 via-purple-900 to-slate-950 text-white">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">프로젝트를 찾을 수 없습니다</h1>
+          <h1 className="text-4xl font-bold mb-4">
+            프로젝트를 찾을 수 없습니다
+          </h1>
           <a
             href="/"
             className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-2xl hover:shadow-purple-500/50 transition duration-300 font-semibold inline-block"
@@ -54,11 +59,17 @@ export default async function ProjectDetail({ params }: { params: any }) {
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-purple-500/20 bg-slate-950/80 backdrop-blur-lg">
         <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center relative">
-          <a href="/" aria-label="뒤로가기" className="text-slate-300 hover:text-white transition duration-300 font-semibold flex items-center gap-2 z-10">
+          <a
+            href="/"
+            aria-label="뒤로가기"
+            className="text-slate-300 hover:text-white transition duration-300 font-semibold flex items-center gap-2 z-10"
+          >
             <span className="text-2xl">←</span>
             <span className="hidden md:inline">뒤로 가기</span>
           </a>
-          <h1 className="text-3xl font-bold gradient-text absolute left-1/2 transform -translate-x-1/2 z-0">seulgi.dev</h1>
+          <h1 className="text-3xl font-bold gradient-text absolute left-1/2 transform -translate-x-1/2 z-0">
+            seulgi.dev
+          </h1>
           <div></div>
         </div>
       </header>
@@ -77,11 +88,11 @@ export default async function ProjectDetail({ params }: { params: any }) {
                     <img
                       src={projectImage}
                       alt={`${project.title} screenshot`}
-                      className="absolute inset-0 w-full h-full object-cover rounded-lg shadow-xl"
+                      className="absolute inset-0 w-full h-full object-cover object-top  rounded-lg shadow-xl"
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center text-3xl md:text-4xl font-bold text-white bg-gradient-to-r from-blue-500 to-purple-600">
-                      {project.title ? project.title.split(" ").map((s) => s[0]).join("").slice(0, 3) : "PRJ"}
+                      {project.title ? project.title : "PRJ"}
                     </div>
                   )}
                 </div>
@@ -89,13 +100,20 @@ export default async function ProjectDetail({ params }: { params: any }) {
             </div>
 
             <div className="md:col-span-4">
-              <h1 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">{project.title}</h1>
-              <p className="text-lg md:text-xl text-slate-300 mb-4">{project.desc}</p>
+              <h1 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">
+                {project.title}
+              </h1>
+              <p className="text-lg md:text-xl text-slate-300 mb-4">
+                {project.desc}
+              </p>
 
               {/* 기술스택 */}
               <div className="flex gap-2 mb-4 flex-wrap">
                 {project.tech.map((tech, i) => (
-                  <span key={i} className="px-3 py-1 bg-purple-500/20 border border-purple-400/50 rounded-full text-sm text-purple-300">
+                  <span
+                    key={i}
+                    className="px-3 py-1 bg-purple-500/20 border border-purple-400/50 rounded-full text-sm text-purple-300"
+                  >
                     {tech}
                   </span>
                 ))}
@@ -103,24 +121,23 @@ export default async function ProjectDetail({ params }: { params: any }) {
 
               {/* 바로가기 링크F */}
               <div className="flex gap-3 flex-wrap">
-                {
-                  project.liveLink && (
-                    <a
-                      href={project.liveLink}
-                      className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-2xl hover:shadow-purple-500/50 transition duration-300 font-semibold"
-                    >
-                      라이브 보기
-                    </a>)
-                }
-                {
-                  project.githubLink &&
-                  (<a
+                {project.liveLink && (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-2xl hover:shadow-purple-500/50 transition duration-300 font-semibold"
+                  >
+                    라이브 보기
+                  </a>
+                )}
+                {project.githubLink && (
+                  <a
                     href={project.githubLink}
                     className="px-6 py-3 border-2 border-purple-400 text-white rounded-lg hover:bg-purple-400/10 transition duration-300 font-semibold"
                   >
                     GitHub 보기
-                  </a>)
-                }
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -134,7 +151,9 @@ export default async function ProjectDetail({ params }: { params: any }) {
             <span className="gradient-text">프로젝트 소개</span>
           </h2>
           <div className="bg-slate-900/50 border border-purple-500/30 rounded-xl p-8 backdrop-blur-sm">
-            <p className="text-lg text-slate-300 leading-relaxed mb-6">{project.fullDesc}</p>
+            <p className="text-lg text-slate-300 leading-relaxed mb-6">
+              {project.fullDesc}
+            </p>
           </div>
         </div>
       </section>
@@ -148,11 +167,12 @@ export default async function ProjectDetail({ params }: { params: any }) {
             </h2>
 
             <div className="bg-slate-900/40 border border-purple-500/30 rounded-xl p-8 space-y-10 backdrop-blur-sm">
-
               {/* 기간 */}
               {project.period && (
                 <div>
-                  <h3 className="text-2xl font-semibold text-white mb-3">프로젝트 기간</h3>
+                  <h3 className="text-2xl font-semibold text-white mb-3">
+                    프로젝트 기간
+                  </h3>
                   <p className="text-lg text-slate-300">{project.period}</p>
                 </div>
               )}
@@ -160,7 +180,9 @@ export default async function ProjectDetail({ params }: { params: any }) {
               {/* 역할 및 기여 */}
               {project.role && (
                 <div>
-                  <h3 className="text-2xl font-semibold text-white mb-3">역할 및 기여</h3>
+                  <h3 className="text-2xl font-semibold text-white mb-3">
+                    역할 및 기여
+                  </h3>
 
                   {/* 역할 */}
                   <p className="text-lg text-slate-300 leading-relaxed whitespace-pre-line mb-4">
@@ -168,13 +190,14 @@ export default async function ProjectDetail({ params }: { params: any }) {
                   </p>
 
                   {/* 기여 */}
-                  {project.contributions && Array.isArray(project.contributions) && (
-                    <ul className="list-disc list-inside space-y-2 text-slate-300">
-                      {project.contributions.map((item, idx) => (
-                        <li key={idx}>{item}</li>
-                      ))}
-                    </ul>
-                  )}
+                  {project.contributions &&
+                    Array.isArray(project.contributions) && (
+                      <ul className="list-disc list-inside space-y-2 text-slate-300">
+                        {project.contributions.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
                 </div>
               )}
             </div>
@@ -182,14 +205,12 @@ export default async function ProjectDetail({ params }: { params: any }) {
         </section>
       )}
 
-
       {/* Features + Screenshots Section */}
       <section className="px-6 py-20 bg-slate-900/10">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-12">
             <span className="gradient-text">주요 기능</span>
           </h2>
-
 
           <div className="bg-slate-900/40 border border-purple-500/30 rounded-xl p-8 space-y-10 backdrop-blur-sm">
             <div className="flex flex-col divide-y divide-purple-500/30">
@@ -202,7 +223,9 @@ export default async function ProjectDetail({ params }: { params: any }) {
                   <div className="flex flex-col gap-2">
                     <div className="flex items-start gap-4 mb-2">
                       <div className="w-5 h-5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 mt-1 flex-shrink-0"></div>
-                      <h3 className="text-lg md:text-xl font-semibold text-white">{feature.title}</h3>
+                      <h3 className="text-lg md:text-xl font-semibold text-white">
+                        {feature.title}
+                      </h3>
                     </div>
                     {feature.desc && (
                       <p className="text-slate-300 text-sm md:text-base leading-relaxed">
@@ -212,13 +235,20 @@ export default async function ProjectDetail({ params }: { params: any }) {
                   </div>
 
                   {/* 대응 스크린샷 */}
-                  {feature.image && (
-                    <div className="rounded-xl overflow-hidden bg-slate-900 shadow-lg transition duration-300 hover:shadow-2xl hover:shadow-purple-500/50">
-                      <img
-                        src={feature.image}
-                        alt={`feature-${idx}`}
-                        className="w-full h-auto object-cover"
-                      />
+                  {feature.image && feature.image.length > 0 && (
+                    <div className="flex gap-4 overflow-x-auto scrollbar scrollbar-thumb-purple-500 scrollbar-track-gray-200">
+                      {feature.image.map((img, imgIdx) => (
+                        <div
+                          key={imgIdx}
+                          className="rounded-xl overflow-hidden bg-slate-900 shadow-lg transition duration-300 hover:shadow-2xl hover:shadow-purple-500/50 min-w-[300px]"
+                        >
+                          <img
+                            src={img}
+                            alt={`feature-${idx}-img-${imgIdx}`}
+                            className="w-full h-auto object-cover"
+                          />
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -227,9 +257,6 @@ export default async function ProjectDetail({ params }: { params: any }) {
           </div>
         </div>
       </section>
-
-
-
 
       {/* CTA Section */}
       <section className="px-6 py-20">
@@ -248,7 +275,10 @@ export default async function ProjectDetail({ params }: { params: any }) {
 
       {/* Footer */}
       <footer className="relative px-6 py-8 border-t border-purple-500/20 bg-slate-950/80 backdrop-blur-lg text-center text-slate-400">
-        <p>&copy; 2025 Frontend Engineer Portfolio. Built with Next.js & Tailwind CSS.</p>
+        <p>
+          &copy; 2025 Frontend Engineer Portfolio. Built with Next.js & Tailwind
+          CSS.
+        </p>
       </footer>
     </div>
   );

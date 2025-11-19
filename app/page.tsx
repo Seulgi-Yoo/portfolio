@@ -72,23 +72,23 @@ export default function Home() {
             <span className="hidden md:block">seulgi.dev</span>
           </h1>
           <ul className="flex gap-2 items-center">
-{[
-                { label: "about", id: "about" },
-                { label: "projects", id: "projects" },
-                { label: "skills", id: "skills" },
-                { label: "contact", id: "contact" },
-              ].map((item) => (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    className="text-slate-200 hover:text-white transition duration-300 relative group text-xs md:text-base px-1 md:px-2 py-1 flex items-center justify-center"
-                    style={{ WebkitTapHighlightColor: 'transparent' }}
-                  >
-                    {item.label.toUpperCase()}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
-                  </a>
-                </li>
-              ))}
+            {[
+              { label: "about", id: "about" },
+              { label: "projects", id: "projects" },
+              { label: "skills", id: "skills" },
+              { label: "contact", id: "contact" },
+            ].map((item) => (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  className="text-slate-200 hover:text-white transition duration-300 relative group text-xs md:text-base px-1 md:px-2 py-1 flex items-center justify-center"
+                  style={{ WebkitTapHighlightColor: "transparent" }}
+                >
+                  {item.label.toUpperCase()}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
@@ -105,7 +105,7 @@ export default function Home() {
             {displayedText}
             <span className="animate-pulse">|</span>
           </p>
-            <br />
+          <br />
           <div className="flex gap-6 justify-center flex-wrap">
             <a
               href="#projects"
@@ -140,12 +140,15 @@ export default function Home() {
           </h3>
           <div className="bg-slate-900/50 border border-purple-500/30 rounded-xl p-8 backdrop-blur-sm hover:border-purple-500/60 transition duration-300 glow-box">
             <p className="text-lg text-slate-300 leading-relaxed mb-4">
-              저는 아름답고 직관적인 사용자 인터페이스를 만드는 것에 열정을 가진 프론트엔드 엔지니어입니다. 
-              React, TypeScript, 그리고 최신 웹 기술에 대한 전문 지식으로 디자인 아이디어를 매력적인 디지털 경험으로 변환합니다.
+              저는 직관적이고 아름다운 사용자 인터페이스를 만드는 데 열정을 가진
+              프론트엔드 엔지니어입니다. React와 TypeScript를 비롯한 최신 웹
+              기술을 활용하여 디자인 아이디어를 매력적인 디지털 경험으로
+              구현합니다.
             </p>
             <p className="text-lg text-slate-300 leading-relaxed">
-              훌륭한 웹 경험은 미적 감각, 기능성, 그리고 성능의 조합이라고 믿습니다. 
-              모든 프로젝트는 배우고 혁신할 수 있는 기회입니다.
+              훌륭한 웹 경험은 미적 감각과 기능성, 성능이 조화롭게 어우러질 때
+              완성된다고 믿습니다. 저는 모든 프로젝트를 성장과 혁신의 기회로
+              여기며, 더 나은 사용자 경험을 만들어가는 데 집중합니다.
             </p>
           </div>
         </div>
@@ -227,15 +230,38 @@ export default function Home() {
             {[
               {
                 title: "Frontend",
-                skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+                skills: [
+                  "React",
+                  "Next.js",
+                  "TypeScript",
+                  "Redux",
+                  "Tailwind CSS",
+                  "MUI",
+                  "Ant Design",
+                  "React Query",
+                ],
               },
               {
                 title: "Tools & Platforms",
-                skills: ["Git", "VS Code", "Figma", "Docker", "Vercel"],
+                skills: [
+                  "Notion",
+                  "Figma",
+                  "Git",
+                  "VS Code",
+                  "Vercel",
+                  "Slack",
+                ],
               },
               {
                 title: "Core Concepts",
-                skills: ["REST APIs", "Responsive Design", "Web Performance", "SEO", "Accessibility"],
+                skills: [
+                  "반응형 웹 디자인",
+                  "REST APIs",
+                  "웹 성능 최적화",
+                  "SEO",
+                  "접근성(Accessibility)",
+                  "UI/UX 설계",
+                ],
               },
             ].map((category, idx) => (
               <div
@@ -269,21 +295,16 @@ export default function Home() {
             <span className="gradient-text">Let's Work Together</span>
           </h3>
           <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
-            프로젝트 아이디어가 있거나 협업하고 싶으신가요? 저에게 연락하세요!
-            함께 멋진 것을 만들어보겠습니다.
+            새로운 프로젝트나 협업에 관심이 있으신가요? 저는 직관적이고 매력적인
+            사용자 경험을 만드는 프론트엔드 개발자입니다. 함께 멋진 웹 경험을
+            만들어봅시다!
           </p>
           <div className="flex gap-6 justify-center flex-wrap">
             <a
-              href="mailto:your@email.com"
+              href="mailto:ysg213@naver.com"
               className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-2xl hover:shadow-purple-500/50 transition duration-300 font-semibold"
             >
               이메일 보내기
-            </a>
-            <a
-              href="#"
-              className="px-8 py-4 border-2 border-purple-400 text-white rounded-lg hover:bg-purple-400/10 transition duration-300 font-semibold"
-            >
-              LinkedIn에서 연결하기
             </a>
           </div>
         </div>
@@ -291,7 +312,19 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="relative px-6 py-8 border-t border-purple-500/20 bg-slate-950/80 backdrop-blur-lg z-10 text-center text-slate-400">
-        <p>&copy; 2025 Frontend Engineer Portfolio. Built with Next.js & Tailwind CSS.</p>
+        <p>&copy; 2025 유슬기. All rights reserved.</p>
+        <p className="mt-2 text-sm">
+          Built with Next.js, React, TypeScript & Tailwind CSS.
+        </p>
+        <p className="mt-1 text-sm">
+          Contact:{" "}
+          <a
+            href="mailto:ysg213@naver.com"
+            className="text-purple-400 hover:underline"
+          >
+            ysg213@naver.com
+          </a>
+        </p>{" "}
       </footer>
     </div>
   );

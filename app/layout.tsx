@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Frontend Engineer Portfolio",
-  description: "Web Frontend Engineer Portfolio",
+  title: "Seulgi's Portfolio",
+  description:
+    "Seulgi의 Frontend Engineer 포트폴리오 | React, Next.js, TypeScript 기반 웹 프로젝트",
   icons: {
     icon: "/favicon.ico",
   },
