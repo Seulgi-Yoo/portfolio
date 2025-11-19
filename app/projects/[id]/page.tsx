@@ -58,7 +58,7 @@ export default async function ProjectDetail({ params }: { params: any }) {
             <span className="text-2xl">←</span>
             <span className="hidden md:inline">뒤로 가기</span>
           </a>
-          <h1 className="text-3xl font-bold gradient-text absolute left-1/2 transform -translate-x-1/2 z-0">유슬기</h1>
+          <h1 className="text-3xl font-bold gradient-text absolute left-1/2 transform -translate-x-1/2 z-0">seulgi.dev</h1>
           <div></div>
         </div>
       </header>
@@ -68,9 +68,8 @@ export default async function ProjectDetail({ params }: { params: any }) {
         <div className="max-w-4xl mx-auto">
           {/* 히어로: 이미지(플레이스홀더) + 제목/설명/태그/버튼 */}
           <div className="mb-8 grid md:grid-cols-7 gap-12 items-center">
-            {/* 이미지:텍스트 비율을 약 3:4 (대략 1.5:2)로 조정합니다 (md 이상에서 적용). */}
             <div className="md:col-span-3">
-              {/* 이미지가 있으면 이미지를 보여주고, 없으면 플레이스홀더를 보여줍니다. */}
+              {/* 이미지가 있으면 이미지를 보여주고, 없으면 플레이스홀더 */}
               <div className="w-full rounded-xl overflow-hidden">
                 {/* 16:9 비율 유지 (padding-top 56.25%) */}
                 <div className="w-full pt-[56.25%] relative">
@@ -93,6 +92,7 @@ export default async function ProjectDetail({ params }: { params: any }) {
               <h1 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">{project.title}</h1>
               <p className="text-lg md:text-xl text-slate-300 mb-4">{project.desc}</p>
 
+              {/* 기술스택 */}
               <div className="flex gap-2 mb-4 flex-wrap">
                 {project.tech.map((tech, i) => (
                   <span key={i} className="px-3 py-1 bg-purple-500/20 border border-purple-400/50 rounded-full text-sm text-purple-300">
@@ -101,19 +101,26 @@ export default async function ProjectDetail({ params }: { params: any }) {
                 ))}
               </div>
 
+              {/* 바로가기 링크F */}
               <div className="flex gap-3 flex-wrap">
-                <a
-                  href={project.liveLink}
-                  className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-2xl hover:shadow-purple-500/50 transition duration-300 font-semibold"
-                >
-                  라이브 보기
-                </a>
-                <a
-                  href={project.githubLink}
-                  className="px-6 py-3 border-2 border-purple-400 text-white rounded-lg hover:bg-purple-400/10 transition duration-300 font-semibold"
-                >
-                  GitHub 보기
-                </a>
+                {
+                  project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-2xl hover:shadow-purple-500/50 transition duration-300 font-semibold"
+                    >
+                      라이브 보기
+                    </a>)
+                }
+                {
+                  project.githubLink &&
+                  (<a
+                    href={project.githubLink}
+                    className="px-6 py-3 border-2 border-purple-400 text-white rounded-lg hover:bg-purple-400/10 transition duration-300 font-semibold"
+                  >
+                    GitHub 보기
+                  </a>)
+                }
               </div>
             </div>
           </div>
@@ -132,24 +139,97 @@ export default async function ProjectDetail({ params }: { params: any }) {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="px-6 py-20 bg-slate-900/30">
+      {/* Project Info Section */}
+      {(project.period || project.role) && (
+        <section className="px-6 py-20 bg-slate-900/10">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold mb-12">
+              <span className="gradient-text">프로젝트 정보</span>
+            </h2>
+
+            <div className="bg-slate-900/40 border border-purple-500/30 rounded-xl p-8 space-y-10 backdrop-blur-sm">
+
+              {/* 기간 */}
+              {project.period && (
+                <div>
+                  <h3 className="text-2xl font-semibold text-white mb-3">프로젝트 기간</h3>
+                  <p className="text-lg text-slate-300">{project.period}</p>
+                </div>
+              )}
+
+              {/* 역할 및 기여 */}
+              {project.role && (
+                <div>
+                  <h3 className="text-2xl font-semibold text-white mb-3">역할 및 기여</h3>
+
+                  {/* 역할 */}
+                  <p className="text-lg text-slate-300 leading-relaxed whitespace-pre-line mb-4">
+                    {project.role}
+                  </p>
+
+                  {/* 기여 */}
+                  {project.contributions && Array.isArray(project.contributions) && (
+                    <ul className="list-disc list-inside space-y-2 text-slate-300">
+                      {project.contributions.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+
+      {/* Features + Screenshots Section */}
+      <section className="px-6 py-20 bg-slate-900/10">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-12">
             <span className="gradient-text">주요 기능</span>
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {project.features.map((feature, idx) => (
-              <div key={idx} className="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 hover:border-purple-500/60 transition duration-300">
-                <div className="flex items-start gap-4">
-                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-slate-300">{feature}</p>
+
+
+          <div className="bg-slate-900/40 border border-purple-500/30 rounded-xl p-8 space-y-10 backdrop-blur-sm">
+            <div className="flex flex-col divide-y divide-purple-500/30">
+              {project.features.map((feature, idx) => (
+                <div
+                  key={idx}
+                  className="grid md:grid-cols-2 gap-6 items-center md:items-start py-6"
+                >
+                  {/* 기능 카드 */}
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-start gap-4 mb-2">
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 mt-1 flex-shrink-0"></div>
+                      <h3 className="text-lg md:text-xl font-semibold text-white">{feature.title}</h3>
+                    </div>
+                    {feature.desc && (
+                      <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+                        {feature.desc}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* 대응 스크린샷 */}
+                  {feature.image && (
+                    <div className="rounded-xl overflow-hidden bg-slate-900 shadow-lg transition duration-300 hover:shadow-2xl hover:shadow-purple-500/50">
+                      <img
+                        src={feature.image}
+                        alt={`feature-${idx}`}
+                        className="w-full h-auto object-cover"
+                      />
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
+
+
 
       {/* CTA Section */}
       <section className="px-6 py-20">

@@ -1,67 +1,132 @@
+export type Feature = {
+  title: string;
+  desc?: string;
+  image?: string; // 해당 기능 관련 스크린샷
+};
+
 export type Project = {
   id: string;
   title: string;
   desc: string;
   tech: string[];
   fullDesc: string;
-  features: string[];
+  features: Feature[];
   githubLink: string;
   liveLink: string;
   image?: string;
+  period?: string;
+  role?: string;
+  contributions?: string[];
 };
 
 export const projectsData: Project[] = [
   {
     id: "0",
-    title: "이커머스 플랫폼",
-    desc: "Next.js와 Tailwind CSS로 만든 현대적인 쇼핑 플랫폼",
-    // 테스트 이미지: public/images/project-0.svg (내보내기 시 public 폴더를 사용하세요)
-    image: "/images/project-0.svg",
-    tech: ["React", "TypeScript", "Tailwind"],
+    title: "Vetell 사용자 웹",
+    desc: "반려동물 보호자용 병원 검색·예약·챗봇 상담 서비스",
+    tech: ["React", "TypeScript", "Tailwind", "Zustand"],
     fullDesc:
-      "사용자 친화적인 인터페이스와 빠른 성능을 갖춘 완전한 이커머스 플랫폼입니다. 상품 검색, 장바구니, 결제 기능 등 모든 필수 기능을 포함하고 있습니다.",
+      "반려동물 병원을 검색하고 예약하며, 병원 챗봇을 통해 상담받을 수 있는 사용자 플랫폼입니다. 모바일 사용자를 우선으로 한 반응형 UI를 구축했고, 보호자 입장에서 직관적인 UX를 설계하는 데 집중했습니다.",
     features: [
-      "반응형 디자인",
-      "장바구니 관리",
-      "상품 필터링 및 검색",
-      "결제 시스템 연동",
-      "사용자 계정 관리",
+      {
+        title: "반응형 디자인",
+        desc: "모바일과 데스크톱 최적화 UI",
+        image: "/images/project-0.svg",
+      },
+      {
+        title: "챗봇 연동",
+        desc: "실시간 상담 기능 제공",
+      },
+      {
+        title: "사용자 계정 관리",
+        desc: "회원가입, 로그인, 프로필 수정 기능",
+      },
     ],
-    githubLink: "#",
-    liveLink: "#",
+    githubLink: "",
+    liveLink: "",
+
+    period: "2023.05 ~ 2024.12",
+    role: "프론트엔드 개발 100%",
+    contributions: [
+      "전체 UI/UX 구조 설계 및 컴포넌트 개발",
+      "챗봇 모바일 웹 연동 및 상태관리 구현",
+      "병원 검색 · 필터링 로직 개발",
+      "예약 프로세스 UI 개발 및 API 연동",
+      "반응형 및 접근성 개선",
+    ],
+
+    image: "/images/vetell-thumb.png",
   },
   {
     id: "1",
-    title: "작업 관리 앱",
-    desc: "부드러운 애니메이션이 있는 실시간 협업 도구",
-    tech: ["Next.js", "WebSocket", "React"],
+    title: "KAHA (한국동물병원협회) 홈페이지",
+    desc: "협회 정보 제공과 회원 관리 기능을 갖춘 웹사이트",
+    image: "/images/kaha-thumbnail.svg",
+    tech: ["Next.js", "TypeScript", "Tailwind", "React Query"],
     fullDesc:
-      "팀 협업을 위한 실시간 작업 관리 애플리케이션입니다. 실시간 업데이트, 부드러운 애니메이션, 직관적인 UI로 생산성을 극대화합니다.",
+      "한국동물병원협회 공식 홈페이지로, 협회 소개, 공지사항, 회원 관리, 행사 안내 등 다양한 기능을 제공하며 관리자와 회원 모두 편리하게 이용할 수 있습니다.",
     features: [
-      "실시간 협업",
-      "작업 우선순위 설정",
-      "팀 멤버 초대",
-      "주석 및 첨부파일",
-      "진행 상황 추적",
+      {
+        title: "회원 관리 시스템",
+        desc: "회원 가입, 정보 수정, 권한 관리 기능",
+        image: "/images/kaha-feature-0.svg",
+      },
+      {
+        title: "공지사항 및 행사 안내",
+        desc: "관리자용 게시판과 회원 대상 알림 기능",
+        image: "/images/kaha-feature-1.svg",
+      },
+      {
+        title: "반응형 웹",
+        desc: "모바일/데스크톱 최적화 디자인",
+        image: "/images/kaha-feature-2.svg",
+      },
     ],
-    githubLink: "#",
+    role: "Frontend 개발 및 CMS 연동",
+    contributions: [
+      "Next.js와 Tailwind를 활용한 UI 개발",
+      "React Query를 사용한 API 상태 관리",
+      "관리자 페이지 기능 구현",
+    ],
+    period: "2023.05 ~ 2023.10",
+    githubLink: "",
     liveLink: "#",
   },
+
+  // ------------------- IVMA -------------------
   {
     id: "2",
-    title: "분석 대시보드",
-    desc: "대화형 차트가 있는 데이터 시각화 대시보드",
-    tech: ["React", "D3.js", "TypeScript"],
+    title: "IVMA (인천수의사협회) 홈페이지",
+    desc: "협회 정보 제공과 소통 기능을 갖춘 웹사이트",
+    image: "/images/ivma-thumbnail.svg",
+    tech: ["Next.js", "TypeScript", "Tailwind"],
     fullDesc:
-      "복잡한 데이터를 아름다운 차트와 그래프로 시각화하는 대시보드입니다. 실시간 데이터 업데이트와 상호작용형 요소로 인사이트를 빠르게 얻을 수 있습니다.",
+      "인천수의사협회 공식 홈페이지로, 협회 소개, 공지사항, 자료실, 회원 관리 기능 등을 제공합니다. 단순한 정보 제공뿐 아니라 협회 회원과 소통할 수 있는 기능도 포함되어 있습니다.",
     features: [
-      "실시간 데이터 시각화",
-      "커스터마이징 가능한 대시보드",
-      "다양한 차트 유형",
-      "데이터 내보내기",
-      "필터 및 검색 기능",
+      {
+        title: "자료실/공지사항",
+        desc: "회원용 자료 다운로드 및 공지사항 게시",
+        image: "/images/ivma-feature-0.svg",
+      },
+      {
+        title: "회원 관리",
+        desc: "회원 가입, 수정, 권한 관리 기능",
+        image: "/images/ivma-feature-1.svg",
+      },
+      {
+        title: "반응형 웹",
+        desc: "모바일/데스크톱 최적화 UI",
+        image: "/images/ivma-feature-2.svg",
+      },
     ],
-    githubLink: "#",
+    role: "Frontend 개발 및 UI/UX 구현",
+    contributions: [
+      "Next.js 기반 웹사이트 SPA 개발",
+      "Tailwind CSS 활용한 반응형 디자인",
+      "회원용 기능 및 자료 다운로드 페이지 구현",
+    ],
+    period: "2023.06 ~ 2023.11",
+    githubLink: "",
     liveLink: "#",
   },
   {
@@ -72,11 +137,21 @@ export const projectsData: Project[] = [
     fullDesc:
       "사용자들이 연결되고 콘텐츠를 공유할 수 있는 완전한 소셜 미디어 플랫폼입니다. 팔로우, 좋아요, 댓글, 메시지 등 모든 기능을 갖추고 있습니다.",
     features: [
-      "사용자 프로필",
-      "게시물 작성 및 공유",
-      "팔로우 시스템",
-      "좋아요 및 댓글",
-      "실시간 메시지",
+      {
+        title: "반응형 디자인",
+        desc: "모바일과 데스크톱 최적화 UI",
+        image: "/images/betell-feature-0.svg",
+      },
+      {
+        title: "챗봇 연동",
+        desc: "실시간 상담 기능 제공",
+        image: "/images/betell-feature-1.svg",
+      },
+      {
+        title: "사용자 계정 관리",
+        desc: "회원가입, 로그인, 프로필 수정 기능",
+        image: "/images/betell-feature-2.svg",
+      },
     ],
     githubLink: "#",
     liveLink: "#",

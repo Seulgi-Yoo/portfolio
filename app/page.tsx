@@ -66,8 +66,11 @@ export default function Home() {
 
       {/* Navigation */}
       <nav className="sticky top-0 z-50 border-b border-purple-500/20 bg-slate-950/80 backdrop-blur-lg">
-        <div className="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
-          <h1 className="text-xl font-bold gradient-text md:text-3xl">유슬기</h1>
+        <div className="max-w-4xl mx-auto md:px-6 px-4 py-3 flex items-center justify-between">
+          <h1 className="text-xl font-bold gradient-text md:text-3xl">
+            <span className="block md:hidden">sg.dev</span>
+            <span className="hidden md:block">seulgi.dev</span>
+          </h1>
           <ul className="flex gap-2 items-center">
 {[
                 { label: "about", id: "about" },
@@ -78,7 +81,7 @@ export default function Home() {
                 <li key={item.id}>
                   <a
                     href={`#${item.id}`}
-                    className="text-slate-200 hover:text-white transition duration-300 relative group text-xs md:text-base px-1 md:px-2 py-1"
+                    className="text-slate-200 hover:text-white transition duration-300 relative group text-xs md:text-base px-1 md:px-2 py-1 flex items-center justify-center"
                     style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
                     {item.label.toUpperCase()}
