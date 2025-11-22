@@ -17,7 +17,22 @@ export const metadata: Metadata = {
   description:
     "Seulgi의 Frontend Engineer 포트폴리오 | React, Next.js, TypeScript 기반 웹 프로젝트",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
+  },
+  openGraph: {
+    title: "Seulgi's Portfolio",
+    description: "Seulgi의 Frontend Engineer 포트폴리오",
+    url: "https://seulgi-portfolio.vercel.app/", // 배포 URL
+    siteName: "Seulgi Portfolio",
+    images: [
+      {
+        url: "/images/seulgi-logo.png", // public 폴더 안에 두면 됨
+        width: 1200,
+        height: 630,
+        alt: "Seulgi Portfolio Preview",
+      },
+    ],
+    type: "website",
   },
 };
 

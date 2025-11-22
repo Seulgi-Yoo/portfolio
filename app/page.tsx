@@ -97,8 +97,9 @@ export default function Home() {
       <section className="relative flex-1 flex items-center justify-center px-6 py-32 z-10">
         <div className="max-w-4xl text-center fade-in">
           <h2 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="gradient-text">Frontend Engineer</span>
+            <span className="text-slate-300">Frontend Engineer</span>
             <br />
+            <span className="gradient-text">Seulgi's </span>
             <span className="text-slate-300">Portfolio</span>
           </h2>
           <p className="text-xl md:text-2xl text-purple-300 mb-4 h-8">
